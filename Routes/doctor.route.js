@@ -52,6 +52,25 @@ doctorRouter.get("/",async(req,res)=>{
     }
 })
 
+doctorRouter.put("/update/:id",async(req,res)=>{
+    const {id}=req.params
+    try {
+        await DoctorModel.findByIdAndUpdate({_id:id},req.body)
+        res.status(200).send({msg:"Updated successfully"})
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+doctorRouter.delete("/delete/:id",async(req,res)=>{
+    const {id}=req.params
+    try {
+        await DoctorModel.findByIdAndDelete({_id:id})
+        res.status(200).send({msg:"Deleted successfully"})
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
 
 
 module.exports={doctorRouter};
