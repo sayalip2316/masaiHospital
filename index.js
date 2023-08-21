@@ -5,8 +5,10 @@ const {userRoute}=require("./Routes/user.route");
 const {doctorRouter}=require("./Routes/doctor.route");
 const dotenv=require("dotenv");
 dotenv.config();
+const cors=require("cors")
 
 app.use(express.json());
+app.use(cors());
 app.use("/",userRoute);
 app.use("/",doctorRouter);
 
